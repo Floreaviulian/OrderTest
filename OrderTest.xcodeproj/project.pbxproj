@@ -18,6 +18,7 @@
 		C18963B926A1934300CFC2BF /* OrderEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18963B826A1934300CFC2BF /* OrderEndpoint.swift */; };
 		C18963BB26A1939900CFC2BF /* OrderNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18963BA26A1939900CFC2BF /* OrderNetworkService.swift */; };
 		C18963BE26A193FE00CFC2BF /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18963BD26A193FE00CFC2BF /* Order.swift */; };
+		C1F9FC0F26A8544300373648 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F9FC0E26A8544300373648 /* OrderDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C18963B826A1934300CFC2BF /* OrderEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEndpoint.swift; sourceTree = "<group>"; };
 		C18963BA26A1939900CFC2BF /* OrderNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNetworkService.swift; sourceTree = "<group>"; };
 		C18963BD26A193FE00CFC2BF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		C1F9FC0E26A8544300373648 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewModel.swift; sourceTree = "<group>"; };
 		F47F8ECB3AE6CFF4B2AD093E /* Pods-OrderTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrderTest.release.xcconfig"; path = "Target Support Files/Pods-OrderTest/Pods-OrderTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C18963AE26A1929800CFC2BF /* OrderDetailsView.swift */,
+				C1F9FC0E26A8544300373648 /* OrderDetailsViewModel.swift */,
 			);
 			path = OrderDetails;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				C18963BE26A193FE00CFC2BF /* Order.swift in Sources */,
 				C18963AF26A1929800CFC2BF /* OrderDetailsView.swift in Sources */,
 				C18963B126A192C600CFC2BF /* OrderCell.swift in Sources */,
+				C1F9FC0F26A8544300373648 /* OrderDetailsViewModel.swift in Sources */,
 				C18963B926A1934300CFC2BF /* OrderEndpoint.swift in Sources */,
 				C189639C26A1919E00CFC2BF /* OrderTestApp.swift in Sources */,
 				C18963B326A192E600CFC2BF /* OrderListViewModel.swift in Sources */,

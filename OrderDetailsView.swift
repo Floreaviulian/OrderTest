@@ -9,13 +9,13 @@ import SwiftUI
 import URLImage
 
 struct OrderDetailsView: View {
-    let order: Order
     var statusTypes = OrderStatus.allCases
-    @State var selected : OrderStatus
+    @ObservedObject private var viewModel: OrderDetailsViewModel
+    @State private var currStatus: OrderStatus
     var body: some View {
         ScrollView {
             VStack {
-                if let url = URL(string: order.imageURL) {
+                if let url = URL(string: viewModel.order.imageURL) {
                     URLImage(url: url) { image in
                         image
                             .resizable()
@@ -26,24 +26,26 @@ struct OrderDetailsView: View {
                             .padding(20)
                     }
                 }
-                Text("Price: \(order.price)$").padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                Text("Price: \(viewModel.order.price)$").padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Name: \(order.deliverTo.name)")
+                    Text("Name: \(viewModel.order.deliverTo.name)")
                     Divider()
-                    Text("Address: \(order.deliverTo.address)")
+                    Text("Address: \(viewModel.order.deliverTo.address)")
                     Divider()
-                    Text("Current status: \(selected.rawValue)")
+                    Text("Current status: \(viewModel.order.currentStatus.rawValue)")
                     Divider()
                 }.padding()
                 Section(header: Text("Select Order Status")) {
-                    Picker("Status", selection: $selected) {
+                    Picker("Status", selection: $currStatus) {
                         ForEach(statusTypes, id: \.self) {
                             Text($0.rawValue)
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                     .padding()
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: {
+                        viewModel.saveStatus(currStatus)
+                    }, label: {
                         Text("Confirm Status").padding([.leading, .trailing], 50)
                             .padding([.top, .bottom], 15)
                             .foregroundColor(.white).background(Color.blue)
@@ -53,11 +55,11 @@ struct OrderDetailsView: View {
                 Spacer()
             }
         }
-        .navigationTitle("\(order.productDescription)")
+        .navigationTitle("\(viewModel.order.productDescription)")
     }
     init(order: Order) {
-        self.order = order
-        selected = order.currentStatus
+        self.currStatus = order.currentStatus
+        viewModel = OrderDetailsViewModel(order: order)
     }
 }
 
