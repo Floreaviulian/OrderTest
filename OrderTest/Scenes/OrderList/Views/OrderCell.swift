@@ -26,7 +26,7 @@ struct OrderCell: View {
             }
             VStack(alignment: .leading) {
                 Text("\(order.productDescription)")
-                Text("Status: \(order.status)")
+                Text("Status: \(order.currentStatus.rawValue)")
             }
             Spacer()
         }

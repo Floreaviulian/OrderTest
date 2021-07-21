@@ -10,8 +10,8 @@ import URLImage
 
 struct OrderDetailsView: View {
     let order: Order
-    var statusTypes = ["new", "pending", "delivered"]
-    @State var selected = Order.dummyData.status
+    var statusTypes = OrderStatus.allCases
+    @State var selected : OrderStatus
     var body: some View {
         ScrollView {
             VStack {
@@ -32,13 +32,13 @@ struct OrderDetailsView: View {
                     Divider()
                     Text("Address: \(order.deliverTo.address)")
                     Divider()
-                    Text("Current status: \(order.status)")
+                    Text("Current status: \(selected.rawValue)")
                     Divider()
                 }.padding()
                 Section(header: Text("Select Order Status")) {
                     Picker("Status", selection: $selected) {
                         ForEach(statusTypes, id: \.self) {
-                            Text($0)
+                            Text($0.rawValue)
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                     .padding()
@@ -54,6 +54,10 @@ struct OrderDetailsView: View {
             }
         }
         .navigationTitle("\(order.productDescription)")
+    }
+    init(order: Order) {
+        self.order = order
+        selected = order.currentStatus
     }
 }
 
